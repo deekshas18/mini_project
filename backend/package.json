@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/deekshas18/mini_project#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongodb": "^6.6.2",
