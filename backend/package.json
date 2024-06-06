@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/deekshas18/mini_project#readme",
   "dependencies": {
+<<<<<<< HEAD
     "@aws-sdk/client-s3": "^3.588.0",
     "@aws-sdk/s3-request-presigner": "^3.590.0",
     "aws-sdk": "^2.1632.0",
+=======
+>>>>>>> 89c8fe5f65e83125df4b99097240d802ca211d95
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

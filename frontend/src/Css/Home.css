@@ -1,0 +1,35 @@
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 1rem; 
+  }
+  
+  .card {
+    margin-top: 10rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 20%; /* Decrease the width of the cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card h3 {
+    margin-top: 0;
+  }
+  
+  .card button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
+  
