@@ -11,6 +11,9 @@ app.use(bodyParser.json())
 const doctorRoutes = require('./routes/doctorRoutes');
 app.use('/api/doctor-routes/',doctorRoutes);
 
+const pythonRoutes = require('./routes/pythonScriptRoutes');
+app.use('/api/python-routes/',pythonRoutes);
+
 app.listen(port,() => {
     console.log("server running on port ", port);
 })
