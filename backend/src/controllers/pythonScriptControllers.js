@@ -102,7 +102,7 @@ const summarizeText = async (req, res) => {
         const fname = req.file.path;
         const notebookPath = path.resolve(__dirname, '../../../Python_scripts/summarizeText.ipynb');
         const notebookDir = path.dirname(notebookPath);
-        
+
         // Convert the Jupyter Notebook to a Python script
         const nbconvert = spawn('jupyter', ['nbconvert', '--to', 'script', notebookPath], {
             cwd: notebookDir
@@ -110,7 +110,7 @@ const summarizeText = async (req, res) => {
 
         nbconvert.on('error', (err) => {
             console.error('Failed to start subprocess:', err);
-            res.status(500).send('Failed to start Jupyter nbconvert');
+            return res.status(500).send('Failed to start Jupyter nbconvert');
         });
 
         nbconvert.on('close', (code) => {
@@ -122,20 +122,28 @@ const summarizeText = async (req, res) => {
             const pythonScriptPath = path.resolve(notebookDir, 'summarizeText.py');
             const process = spawn('python3', [pythonScriptPath, fname]);
 
+            let scriptOutput = '';
+            let scriptError = '';
+
             process.stdout.on('data', (data) => {
-                console.log(`stdout: ${data}`);
-                res.send(data);
+                scriptOutput += data.toString();
             });
 
             process.stderr.on('data', (data) => {
-                console.error(`stderr: ${data}`);
-                res.status(500).send('Internal Server Error');
+                scriptError += data.toString();
             });
 
             process.on('close', (code) => {
-                console.log(`child process exited with code ${code}`);
+                if (code === 0) {
+                    return res.send(scriptOutput);
+                } else {
+                    console.error(`Python script error: ${scriptError}`);
+                    return res.status(500).send('Internal Server Error');
+                }
             });
         });
+
+        console.log("successful execution");
     } catch (error) {
         console.error(`Error executing Python script: ${error.message}`);
         res.status(500).send('Internal Server Error');
