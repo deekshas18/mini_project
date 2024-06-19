@@ -37,22 +37,28 @@
 }
 
 .addbtn {
-  width: 30%;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  margin-left: 27rem;
+  padding: 1rem 2rem;
+  /* margin-left: 10rem; */
 }
 
 .displaybtn {
-  width: 30%;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  margin-left: 27rem;
+  padding: 1rem 2rem;
+  /* margin-right: 8rem; */
+  /* margin-left: 27rem; */
 }
 
 .twobtn {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  margin-right: 500px;
+  margin-top: 3rem;
+  /* margin-right: 1rem;  */
+  /* margin-left: 3rem ; */
+  /* margin-right: 500px; */
 }
