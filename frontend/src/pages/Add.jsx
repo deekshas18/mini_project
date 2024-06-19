@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 import "../Css/Add.css";
-import axios from '../axios/axios'
+import axios from '../Axios/axios'
 const Add = () => {
   const [docInfo, setDocInfo] = useState({
     dname:"",
