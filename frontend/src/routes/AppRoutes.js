@@ -1,8 +1,8 @@
 import React from 'react'
 // import {Route,Routes} from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home'
-import Login from '../pages/Login'
+import Home from '../pages/home'
+import Login from '../pages/login'
 import Display from '../pages/Display';
 import Add from '../pages/Add';
 

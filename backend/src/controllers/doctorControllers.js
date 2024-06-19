@@ -22,7 +22,7 @@ const addDoctor = async(req,res) => {
                 { $push: { patients: { $each: patients } } },
                 { new: true });
             console.log(result);
-            res.status(200).json({"doctorUpdated":result});
+            return res.status(200).json({"doctorUpdated":result});
         }
     }
     catch(err){
@@ -36,10 +36,10 @@ const getDoctors = async(req,res) => {
         const response = await DoctorSchema.find({}).select("+dname +specialization +patients");
         console.log(response);
 
-        res.status(200).json({"DoctorsList":response});
+        return res.status(200).json({"DoctorsList":response});
     }catch(err){    
         console.log(err.message);
-        res.status(500).json({"message":"Unable to fetch details of doctors"});
+        return res.status(500).json({"message":"Unable to fetch details of doctors"});
     }
 }
 module.exports.addDoctor = addDoctor;
