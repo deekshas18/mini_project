@@ -6,13 +6,12 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-app.use(cors())
+// app.use(cors())
 
 const env = require('dotenv');
 env.config({path:__dirname + '/env/.env'});
 const port = process.env.PORT;
 
-const cors = require('cors');
 app.use(express.json());
 const allowedDomains = "http://localhost:3000";
 app.use(cors({
