@@ -209,4 +209,18 @@ module.exports.deleteFile = async (req, res) => {
     res.status(200).json({ message: "File deleted successfully" });
 };
 
+//get patient name 
+module.exports.getpatientnames = async(req,res) =>{
+        try {
+            // Fetch all patient names from the database
+            const patients = await Patient.find({}, 'name').select('name'); // Only select the 'name' field
+            // Send the patient names as a response
+            res.status(200).json(patients);
+        } catch (e) {
+            // Send a 500 status code and the error message if an exception occurs
+            res.status(500).json({ error: e.message });
+            console.log(e.message);
+        }
+    };
+
 

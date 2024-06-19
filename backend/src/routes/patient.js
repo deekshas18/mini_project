@@ -10,5 +10,6 @@ router.put('/update/:idey/:key', uploadToAws, patientController.update);
 router.get('/find/:idey', patientController.find);
 router.get('/getfiles/:idey', patientController.getFileNames);
 router.delete('/delete/:idey/:filename', deleteFileMiddleware, patientController.deleteFile);
+router.get('/getpatientnames',patientController.getpatientnames)
 
 module.exports = router;
