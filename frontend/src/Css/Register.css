@@ -1,3 +1,8 @@
+body{
+  background-color: #d4e9ff;
+  /* height: 100vh; */
+}
+
 .login-container {
     width: 300px;
     /* margin: 0 auto; */
@@ -7,6 +12,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
   }
   
   .login-container h2 {
@@ -45,4 +51,5 @@
   
   .hyperlink{
     margin-top: 0.5rem;
+    /* color: #007BFF; */
   }

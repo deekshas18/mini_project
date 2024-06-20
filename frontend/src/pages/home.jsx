@@ -118,14 +118,7 @@ function Home() {
           )}
         </div>
       </div>
-      <div className="twobtn">
-        <Link to="/Add">
-          <button className="addbtn">Add</button>
-        </Link>
-        <Link to="/Display">
-          <button className="displaybtn">View</button>
-        </Link>
-      </div>
+      
     </div>
   );
 }

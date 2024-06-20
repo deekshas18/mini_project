@@ -6,6 +6,7 @@ import Login from '../pages/login'
 import Display from '../pages/Display';
 import Add from '../pages/Add';
 import Register from '../pages/Register';
+import Homemain from '../pages/Homemain';
 
 
 function AppRoutes() {
@@ -14,7 +15,8 @@ function AppRoutes() {
         <Routes>
             <Route path='/Login' element={<Login/>}/>
             <Route path="/" element={<Register/>}/>
-            <Route path="/home" element={<Home/>}/>
+            <Route path="/Homemain" element={<Homemain/>}/>
+            <Route path="/Home" element={<Home/>}/>
             <Route path="/Add" element={<Add/>}/>
             <Route path='/Display' element={<Display/>}/>
         </Routes>

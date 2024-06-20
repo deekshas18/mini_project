@@ -73,7 +73,7 @@ function Login() {
       });
       console.log(response.data);
       // Redirect to home page after successful login
-      navigate('/Home'); // Using navigate for navigation
+      navigate('/Homemain'); // Using navigate for navigation
 
     } catch (error) {
       if (error.response) {
@@ -122,7 +122,7 @@ function Login() {
         <button type="submit">Sign In</button>
         {error && <div className="error-message">{error}</div>}
         <div className="hyperlink">
-          Not Registered? <Link to="/Register">Register here</Link>
+          Not Registered? <Link to="/">Register here</Link>
         </div>
       </form>
     </div>
