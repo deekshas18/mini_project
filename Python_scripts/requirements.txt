@@ -1,0 +1,6 @@
+regex
+torch
+transformers
+vosk
+pydub
+jupyter
