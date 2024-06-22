@@ -65,10 +65,10 @@ module.exports.update = async (req, res) => {
 const { getFileUrls } = require("../middleware/s3Fetch"); 
 
 module.exports.find = async (req, res) => {
-    const { idey } = req.params;
+    const { name } = req.params;
 
     try {
-        let patient = await Patient.findOne({ idey: idey });
+        let patient = await Patient.findOne({ name: name });
         if (!patient) {
             return res.status(404).json({ message: "Patient not found" });
         }
