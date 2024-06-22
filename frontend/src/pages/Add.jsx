@@ -20,6 +20,12 @@ const Add = () => {
     e.preventDefault();
       const response = await axios.post('/doctor-routes/add-doctor', docInfo , {'content-type': 'multipart/form-data'});
       console.log(response)
+      setDocInfo({
+        dname:"",
+        specialization:"",
+        patients:[]
+      })
+      return alert("Doctor added successfully")
   }
 
 
@@ -41,6 +47,12 @@ const Add = () => {
     e.preventDefault();
     const response = await axios.post('/patient/register' , patientDetails, {'content-type' : 'multipart/form-data'});
     console.log(response);
+    setPatientDetails({
+      name:"",
+    idey:"",
+    Details:{}
+    })
+    return alert("Patient added successfully")
   }
   return (
     <div className="main-cont">

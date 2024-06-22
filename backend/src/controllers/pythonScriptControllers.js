@@ -7,6 +7,9 @@ const upload = multer({ dest: "uploads/" });
 
 const convertToText = async (req, res) => {
     try {
+        if (!req.file) {
+            return res.status(400).send('No file uploaded.');
+        }
         const filePath = req.file.path;
         const outputFileName = 'processed_' + req.file.filename + '.txt';
         // const outputFilePath = path.join(__dirname, 'processedTextFiles', outputFileName);
@@ -80,8 +83,9 @@ const convertToText = async (req, res) => {
                             console.error("Error sending file:", err.message);
                             res.status(500).send("Error sending file");
                         }
+                        
                         console.log("File processed and downloaded successfully.");
-    
+                        return res.status(200)
                         // fs.unlinkSync(filePath);
                         // fs.unlinkSync(outputFilePath);
                     });

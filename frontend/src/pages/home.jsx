@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../Css/Home.css";
+import axios from "../Axios/axios";
+import Loader from "../components/Loader";
 
 function Home() {
   const mp3InputRef = useRef(null);
@@ -8,6 +10,7 @@ function Home() {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleMp3Upload = () => {
     mp3InputRef.current.click();
@@ -17,19 +20,60 @@ function Home() {
     textInputRef.current.click();
   };
 
-  const handleMp3Change = (event) => {
+  const handleMp3Change = async(event) => {
     const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file',file);
+    setLoading(true);
     if (file) {
       console.log("Selected MP3 file:", file);
       // Handle the MP3 file upload logic here
+      try{
+        const response = await axios.post("/python-routes/convert-to-text", formData , {"content-type" : "multipart/form-data"},{responseType: 'blob'});
+        console.log(response);
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'processed_file.txt'); // Set the desired file name
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link); // Clean up
+      }catch(err){
+        alert("Error transcribing the file");
+        console.log(err.message);
+      }finally {
+        setLoading(false); // Hide loader
+      }
     }
   };
 
-  const handleTextChange = (event) => {
+  const handleTextChange = async(event) => {
     const file = event.target.files[0];
     if (file) {
       console.log("Selected Text file:", file);
       // Handle the Text file upload logic here
+      const formData = new FormData();
+      formData.append('file',file);
+      setLoading(true);
+      try{
+        const response = await axios.post('/python-routes/summarize-text', formData, {"content-type": "multipart/form-data"},{responseType:"blob"});
+        console.log(response);
+
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download','processed_file.txt');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }catch(err){
+        alert("Error transcribing the file");
+        console.log(err.message);
+      }finally{
+        setLoading(false);
+      }
+
     }
   };
 
@@ -89,6 +133,7 @@ function Home() {
             onChange={handleMp3Change}
           />
         </div>
+        {loading && <Loader />}
         <div className="card">
           <h3>Transcribe Text File</h3>
           <p>Upload the text file here(pdf or txt).</p>

@@ -6,10 +6,8 @@
 
 import sys
 import subprocess
-# from transformers import pipeline
-from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import pipeline
 import os
-from concurrent.futures import ThreadPoolExecutor
 
 def add_punctuation(text):
     """
@@ -25,53 +23,18 @@ def add_punctuation(text):
         print(f"Error in add_punctuation: {e.output}")
         sys.exit(1)
 
-def download_model():
-    """
-    Download and save the model and tokenizer locally.
-    """
-    model_name = "facebook/bart-large-cnn"
-    model_dir = "./local_model/bart-large-cnn"
-    
-    if not os.path.exists(model_dir):
-        print("Downloading and saving model...")
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model.save_pretrained(model_dir)
-        tokenizer.save_pretrained(model_dir)
-        print(f"Model and tokenizer saved to {model_dir}")
-    else:
-        print(f"Model already exists at {model_dir}")
-
-
-def summarize_chunk(chunk, summarizer):
-    """
-    Summarize a single chunk of text.
-    """
-    return summarizer(chunk)[0]["summary_text"]
-
 def summarize_text(text):
     """
     Summarize the text using a transformer summarization model.
     """
+    summarizer = pipeline("summarization", model="t5-small")
 
-    model_dir = "./local_model/bart-large-cnn"
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
-    tokenizer = AutoTokenizer.from_pretrained(model_dir)
-
-
-    # this was the model which was used earlier as it was not efficient switched to other model
-    # summarizer = pipeline("summarization", model="t5-small")
-    # summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-    summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
-
-    print("summarization model running")
     split_tokens = text.split(" ")
-    docs = [" ".join(split_tokens[i:i + 850]) for i in range(0, len(split_tokens), 850)]
+    docs = [" ".join(split_tokens[i:i+850]) for i in range(0, len(split_tokens), 850)]
 
-    with ThreadPoolExecutor() as executor:
-        summaries = list(executor.map(lambda doc: summarize_chunk(doc, summarizer), docs))
-
-    summary = "\n\n".join(summaries)
+    summaries = summarizer(docs)
+    summary = "\n\n".join([d["summary_text"] for d in summaries])
+    
     return summary
 
 def main():
@@ -89,7 +52,6 @@ def main():
     # Add punctuation to the text
     punctuated_text = add_punctuation(text)
 
-    download_model()    
     # Summarize the text
     summary = summarize_text(punctuated_text)
 
