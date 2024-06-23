@@ -72,6 +72,84 @@ except Exception as e:
     sys.exit(1)
 
 
+# In[23]:
+
+
+import wave
+from pydub import AudioSegment
+from pydub.exceptions import CouldntDecodeError
+import pygame
+
+def verify_wav_file(file_path):
+    try:
+        with wave.open(file_path, 'rb') as wf:
+            return True
+    except wave.Error as e:
+        print(f"File verification failed: {e}")
+        return False
+
+def handleWavFile(input_file, output_file="processed_output.wav"):
+    try:
+        # Attempt to load the file with pydub
+        try:
+            audio = AudioSegment.from_file(input_file)
+        except CouldntDecodeError:
+            print(f"Could not decode {input_file}. It may not be a valid audio file.")
+            return
+        
+        # Check if the loaded file is actually a WAV file
+        if not verify_wav_file(input_file):
+            print(f"{input_file} is not a valid WAV file, attempting conversion to WAV.")
+            temp_output = "temp_converted.wav"
+            try:
+                audio.export(temp_output, format="wav")
+                input_file = temp_output
+            except Exception as e:
+                print(f"Conversion failed: {e}")
+                return
+
+        # Verify if the converted file is a valid WAV file
+        if not verify_wav_file(input_file):
+            print(f"Input file {input_file} is not a valid WAV file.")
+            return
+
+        # Load the WAV file (now guaranteed to be a valid WAV file)
+        audio = AudioSegment.from_file(input_file, format="wav")
+        
+        # Convert WAV to standard format (16-bit PCM, mono)
+        audio = audio.set_sample_width(2)  # Set to 16-bit PCM
+        audio = audio.set_channels(1)  # Set to mono
+        
+        # Export the processed WAV file
+        audio.export(output_file, format="wav")
+        
+        print(f"Successfully processed {input_file} and exported to {output_file}.")
+        return output_file  # Returning the output file name
+    except Exception as e:
+        print(f"Failed to process {input_file}: {e}")
+
+def play_audio(file_path):
+    try:
+        # Initialize pygame mixer
+        pygame.mixer.init()
+        # Load the WAV file
+        pygame.mixer.music.load(file_path)
+        # Play the audio file
+        pygame.mixer.music.play()
+        # Wait until the audio file has finished playing
+        while pygame.mixer.music.get_busy():
+            pygame.time.Clock().tick(10)
+    except Exception as e:
+        print(f"Failed to play {file_path}: {e}")
+
+# Example usage
+output = handleWavFile("one.wav", "output.wav")
+if output:
+    print(f"The processed file is saved as: {output}")
+    print("Playing the processed WAV file:")
+    play_audio(output)
+
+
 # In[ ]:
 
 

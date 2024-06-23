@@ -77,18 +77,18 @@ const convertToText = async (req, res) => {
                         console.error(`Process exited with code ${code}`);
                         return res.status(500).send("Error processing audio file");
                     }
-    
-                    res.download(outputFilePath, outputFileName, (err) => {
-                        if (err) {
-                            console.error("Error sending file:", err.message);
-                            res.status(500).send("Error sending file");
-                        }
-                        
-                        console.log("File processed and downloaded successfully.");
-                        return res.status(200)
-                        // fs.unlinkSync(filePath);
-                        // fs.unlinkSync(outputFilePath);
-                    });
+                    
+                    summarizeFileFromAudio(outputFilePath, res);
+                    // res.download(outputFilePath, outputFileName, (err) => {
+                    //     if (err) {
+                    //         console.error("Error sending file:", err.message);
+                    //         res.status(500).send("Error sending file");
+                    //     }
+                    //     console.log("File processed and downloaded successfully.");
+                    //     return res.status(200)
+                    //     // fs.unlinkSync(filePath);
+                    //     // fs.unlinkSync(outputFilePath);
+                    // });
                 });
             });
         })
@@ -101,7 +101,7 @@ const convertToText = async (req, res) => {
 
 
 
-const summarizeText = async (req, res) => {
+const summarizeText = async ( req, res) => {
     try {
         const fname = req.file.path;
         const notebookPath = path.resolve(__dirname, '../../../Python_scripts/summarizeText.ipynb');
@@ -175,6 +175,80 @@ const summarizeText = async (req, res) => {
     }
 };
 
+const summarizeFileFromAudio = async ( outputFile, res) => {
+    try {
+        const fname = outputFile;
+        const notebookPath = path.resolve(__dirname, '../../../Python_scripts/summarizeText.ipynb');
+        const notebookDir = path.dirname(notebookPath);
 
+        // Convert the Jupyter Notebook to a Python script
+        const nbconvert = spawn('jupyter', ['nbconvert', '--to', 'script', notebookPath], {
+            cwd: notebookDir
+        });
+
+        nbconvert.on('error', (err) => {
+            console.error('Failed to start subprocess:', err);
+            return res.status(500).send('Failed to start Jupyter nbconvert');
+        });
+
+        nbconvert.on('close', (code) => {
+            if (code !== 0) {
+                return res.status(500).send('Error converting notebook to script');
+            }
+
+            // Execute the converted Python script
+            const pythonScriptPath = path.resolve(notebookDir, 'summarizeText.py');
+            const process = spawn('python3', [pythonScriptPath, fname]);
+
+            let scriptOutput = '';
+            let scriptError = '';
+            let summarizedFilePath = '';
+
+            process.stdout.on('data', (data) => {
+                summarizedFilePath += data.toString();
+            });
+
+            process.stderr.on('data', (data) => {
+                scriptError += data.toString();
+            });
+
+            process.on('close', (code) => {
+                if (code === 0) {
+                    // Remove any newline characters from the output path
+                    summarizedFilePath = summarizedFilePath.trim();
+    
+                    // Check if the file exists
+                    if (fs.existsSync(summarizedFilePath)) {
+                        // Set headers for file download
+                        const outputFileName = path.basename(summarizedFilePath);
+                        res.setHeader('Content-Disposition', `attachment; filename="${outputFileName}"`);
+                        res.setHeader('Content-Type', 'text/plain'); // Adjust content type as needed
+    
+                        // Stream the file back to the client for download
+                        const fileStream = fs.createReadStream(summarizedFilePath);
+                        fileStream.pipe(res);
+    
+                        // Optionally, you can delete the input and output files after sending the response
+                        // fs.unlinkSync(inputFilePath);
+                        // fs.unlinkSync(summarizedFilePath);
+                    } else {
+                        console.error(`Output file not found: ${summarizedFilePath}`);
+                        res.status(500).send('Internal Server Error');
+                    }
+                } else {
+                    console.error(`Python script error: ${scriptError}`);
+                    return res.status(500).send('Internal Server Error');
+                }
+            });
+        });
+
+        console.log("successful execution");
+    } catch (error) {
+        console.error(`Error executing Python script: ${error.message}`);
+        res.status(500).send('Internal Server Error');
+    }
+};
 module.exports.convertToText = convertToText;
 module.exports.summarizeText = summarizeText;
+module.exports.summarizeFileFromAudio = summarizeFileFromAudio;
+
