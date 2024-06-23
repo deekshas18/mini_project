@@ -68,7 +68,7 @@ def main():
     with open(output_filename, "w") as f:
         f.write(summary)
     
-    print(f"Summary written to {output_filename}")
+    print(f"{output_filename}")
 
 if __name__ == "__main__":
     main()

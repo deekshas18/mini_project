@@ -77,7 +77,7 @@ const convertToText = async (req, res) => {
                         console.error(`Process exited with code ${code}`);
                         return res.status(500).send("Error processing audio file");
                     }
-    
+                    
                     res.download(outputFilePath, outputFileName, (err) => {
                         if (err) {
                             console.error("Error sending file:", err.message);
@@ -99,6 +99,52 @@ const convertToText = async (req, res) => {
     }
 };
 
+const summarizeFile = (inputFilePath) => {
+    return new Promise((resolve, reject) => {
+        const notebookPath = path.resolve(__dirname, '../../../Python_scripts/summarizeText.ipynb');
+        const notebookDir = path.dirname(notebookPath);
+
+        // Convert the Jupyter Notebook to a Python script
+        const nbconvert = spawn('jupyter', ['nbconvert', '--to', 'script', notebookPath], {
+            cwd: notebookDir
+        });
+
+        nbconvert.on('error', (err) => {
+            console.error('Failed to start subprocess:', err);
+            reject('Failed to start Jupyter nbconvert');
+        });
+
+        nbconvert.on('close', (code) => {
+            if (code !== 0) {
+                reject('Error converting notebook to script');
+            }
+
+            // Execute the converted Python script
+            const pythonScriptPath = path.resolve(notebookDir, 'summarizeText.py');
+            const process = spawn('python3', [pythonScriptPath, inputFilePath]);
+
+            let scriptOutput = '';
+            let scriptError = '';
+
+            process.stdout.on('data', (data) => {
+                scriptOutput += data.toString();
+            });
+
+            process.stderr.on('data', (data) => {
+                scriptError += data.toString();
+            });
+
+            process.on('close', (code) => {
+                if (code === 0) {
+                    resolve(scriptOutput);
+                } else {
+                    console.error(`Python script error: ${scriptError}`);
+                    reject('Internal Server Error');
+                }
+            });
+        });
+    });
+};
 
 
 const summarizeText = async (req, res) => {
@@ -128,10 +174,9 @@ const summarizeText = async (req, res) => {
 
             let scriptOutput = '';
             let scriptError = '';
-            let summarizedFilePath = '';
 
             process.stdout.on('data', (data) => {
-                summarizedFilePath += data.toString();
+                scriptOutput += data.toString();
             });
 
             process.stderr.on('data', (data) => {
@@ -140,27 +185,7 @@ const summarizeText = async (req, res) => {
 
             process.on('close', (code) => {
                 if (code === 0) {
-                    // Remove any newline characters from the output path
-                    summarizedFilePath = summarizedFilePath.trim();
-    
-                    // Check if the file exists
-                    if (fs.existsSync(summarizedFilePath)) {
-                        // Set headers for file download
-                        const outputFileName = path.basename(summarizedFilePath);
-                        res.setHeader('Content-Disposition', `attachment; filename="${outputFileName}"`);
-                        res.setHeader('Content-Type', 'text/plain'); // Adjust content type as needed
-    
-                        // Stream the file back to the client for download
-                        const fileStream = fs.createReadStream(summarizedFilePath);
-                        fileStream.pipe(res);
-    
-                        // Optionally, you can delete the input and output files after sending the response
-                        // fs.unlinkSync(inputFilePath);
-                        // fs.unlinkSync(summarizedFilePath);
-                    } else {
-                        console.error(`Output file not found: ${summarizedFilePath}`);
-                        res.status(500).send('Internal Server Error');
-                    }
+                    return res.send(scriptOutput);
                 } else {
                     console.error(`Python script error: ${scriptError}`);
                     return res.status(500).send('Internal Server Error');
