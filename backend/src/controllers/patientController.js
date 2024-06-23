@@ -1,71 +1,4 @@
-// const Patient = require("../models/patientModel");
 
-// module.exports.register = async(req,res) =>{
-//     try{
-//         const patient = new Patient ({
-//             name:req.body.name,
-//             idey:req.body.idey,
-//             Details:req.body.Details
-//         })
-//         //console.log(patient)
-//         await patient.save()
-//         res.status(200).json(patient)
-
-//     }catch(e){
-//         res.status(500).json(e.message)
-//         console.log(e.message)
-//     }
-// }
-
-// // module.exports.update = async(req,res)=>{
-// //     try{
-
-// //         const idey = req.params
-
-// //         const patient = await Patient.findOne({key:idey})
-// //         res.status(200).json(patient)
-
-// //     }catch(e){
-// //         res.status(200).json(e.message)
-// //     }
-// // }
-
-//  module.exports.update = async (req, res) => {
-//     try {
-//         const { idey, key } = req.params;
-//         const { newValue } = req.body;
-
-//         // Find the patient by idey
-//         let patient = await Patient.findOne(idey);
-
-//         if (!patient) {
-//             return res.status(404).json({ message: "Patient not found" });
-//         }
-
-//         // Access the details based on the key
-//         if (!patient.Details.has(key)) {
-//             patient.Details.set(key, []);
-//         }
-//         patient.Details.get(key).push(newValue);
-
-//         // Save the updated patient
-//         await patient.save();
-
-//         res.status(200).json(patient);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-// module.exports.find = async (req, res) =>{
-//     const idey = req.params;
-
-//     let userm = await Patient.findOne(idey)
-//     console.log(userm)
-// }
-
-
-//chatgpt
 const Patient = require("../models/patientModel");
 
 module.exports.register = async (req, res) => {
@@ -128,45 +61,14 @@ module.exports.update = async (req, res) => {
     }
 };
 
-//const Patient = require("../models/patientModel");
-// const { getFileContents } = require("../middleware/s3Fetch"); // Adjust the path accordingly
 
-// module.exports.find = async (req, res) => {
-//     const { idey } = req.params;
-
-//     try {
-//         let patient = await Patient.findOne({ idey: idey });
-//         if (!patient) {
-//             return res.status(404).json({ message: "Patient not found" });
-//         }
-
-//         // Iterate over patient details to fetch file contents
-//         const detailsWithContents = {};
-//         for (const [key, fileKeys] of patient.Details.entries()) {
-//             detailsWithContents[key] = await getFileContents(fileKeys);
-//         }
-
-//         // Add the contents to the patient object
-//         const patientWithContents = {
-//             ...patient._doc,
-//             Details: detailsWithContents
-//         };
-
-//         res.status(200).json(patientWithContents);
-//     } catch (e) {
-//         res.status(500).json(e.message);
-//         console.log(e.message);
-//     }
-// };
-
-//const Patient = require("../models/patientModel");
-const { getFileUrls } = require("../middleware/s3Fetch"); // Adjust the path accordingly
+const { getFileUrls } = require("../middleware/s3Fetch"); 
 
 module.exports.find = async (req, res) => {
-    const { idey } = req.params;
+    const { name } = req.params;
 
     try {
-        let patient = await Patient.findOne({ idey: idey });
+        let patient = await Patient.findOne({ name: name });
         if (!patient) {
             return res.status(404).json({ message: "Patient not found" });
         }

@@ -7,6 +7,7 @@ import Display from '../pages/Display';
 import Add from '../pages/Add';
 import Register from '../pages/Register';
 import Homemain from '../pages/Homemain';
+import Edit from '../pages/Edit';
 
 
 function AppRoutes() {
@@ -19,6 +20,7 @@ function AppRoutes() {
             <Route path="/Home" element={<Home/>}/>
             <Route path="/Add" element={<Add/>}/>
             <Route path='/Display' element={<Display/>}/>
+            <Route path='/Edit' element={<Edit/>}/>
         </Routes>
     </div>
   )
