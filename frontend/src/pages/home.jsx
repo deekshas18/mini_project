@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "../Css/Home.css";
 import axios from "../Axios/axios";
 import Loader from "../components/Loader";
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'; // Correct import
+// import { FFmpeg } from '@ffmpeg/ffmpeg';
+// import {FFmpeg} from '@ffmpeg/ffmpeg';
 
 function Home() {
   const mp3InputRef = useRef(null);
@@ -11,6 +14,12 @@ function Home() {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [audioUrl, setAudioUrl] = useState('');
+
+  // const ffmpeg = FFmpeg({ log: true });
+  // const ffmpeg = createFFmpeg({ log: true });
+  // const ffmpeg = FFmpeg.createFFmpeg({ log: true });
+
 
   const handleMp3Upload = () => {
     mp3InputRef.current.click();
@@ -77,6 +86,75 @@ function Home() {
     }
   };
 
+  // const handleStartDictating = async () => {
+  //   if (isRecording) {
+  //     mediaRecorder.stop();
+  //   } else {
+  //     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //     const recorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+  //     setAudioChunks([]);
+
+  //     recorder.ondataavailable = (event) => {
+  //       if (event.data.size > 0) {
+  //         setAudioChunks((prev) => [...prev, event.data]);
+  //       }
+  //     };
+
+  //     recorder.onstop = async () => {
+  //       try {
+  //         const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+  //         const url = URL.createObjectURL(audioBlob);
+  //         setAudioUrl(url);
+  //         await convertToMP3(audioBlob);
+  //       } catch (err) {
+  //         alert("Error uploading recording");
+  //         console.log(err.message);
+  //       } finally {
+  //         setLoading(false);
+  //       }
+  //     };
+
+  //     recorder.start();
+  //     setMediaRecorder(recorder);
+  //   }
+  //   setIsRecording(!isRecording);
+  // };
+
+  // const convertToMP3 = async (audioBlob) => {
+  //   setLoading(true);
+  //   try {
+  //     await ffmpeg.load();
+  //     const fetchFile = FFmpeg.fetchFile();
+  //     ffmpeg.FS('writeFile', 'input.webm', await fetchFile(audioBlob));
+  //     await ffmpeg.run('-i', 'input.webm', 'output.mp3');
+  //     const data = ffmpeg.FS('readFile', 'output.mp3');
+  //     const mp3Blob = new Blob([data.buffer], { type: 'audio/mp3' });
+  //     const mp3Url = URL.createObjectURL(mp3Blob);
+
+  //     const formData = new FormData();
+  //     formData.append('file', mp3Blob, 'recording.mp3');
+  //     console.log("MP3 Blob:", mp3Blob);
+
+  //     setLoading(true);
+  //     const response = await axios.post("/python-routes/convert-to-text", formData, { "content-type": "multipart/form-data" });
+  //     const textUrl = window.URL.createObjectURL(new Blob([response.data]));
+  //     const a = document.createElement("a");
+  //     a.style.display = "none";
+  //     a.href = textUrl;
+  //     a.download = "processed_file.txt";
+  //     document.body.appendChild(a);
+  //     a.click();
+  //     window.URL.revokeObjectURL(textUrl);
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert("Failed to convert to MP3");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
+
   const handleStartDictating = async () => {
     if (isRecording) {
       mediaRecorder.stop();
@@ -85,7 +163,7 @@ function Home() {
       const recorder = new MediaRecorder(stream);
 
       // Reset audio chunks **before each recording**
-      setAudioChunks([]);
+      await setAudioChunks([]);
 
       recorder.ondataavailable = (event) => {
         if (event.data.size > 0) {
@@ -93,23 +171,38 @@ function Home() {
         }
       };
 
-      recorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-        console.log("Recorded Audio Blob:", audioBlob);
+      recorder.onstop = async() => {
+        try{
 
-        const downloadAudio = () => {
-          const url = window.URL.createObjectURL(audioBlob);
-          const a = document.createElement("a");
-          a.style.display = "none";
-          a.href = url;
-          a.download = "recording.wav";
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-        };
+          const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+  
+          const formData = new FormData();
+          formData.append('file',audioBlob);
+          console.log("Recorded Audio Blob:", audioBlob);
 
-        // Call download function only after recording stops
-        downloadAudio();
+          setLoading(true);
+          const response = await axios.post("/python-routes/convert-to-text", formData , {"content-type" : "multipart/form-data"});
+          console.log(response);
+          
+          const downloadAudio = () => {
+            const url = window.URL.createObjectURL(audioBlob);
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = "recording.wav";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          };
+  
+          // Call download function only after recording stops
+          downloadAudio();
+        }catch(err){
+          alert("error uploading recording");
+          console.log(err.message);
+        }finally{
+          setLoading(false);
+        }
       };
 
       recorder.start();
