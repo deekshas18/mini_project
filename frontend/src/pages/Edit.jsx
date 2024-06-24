@@ -13,8 +13,11 @@ const Edit = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axiosInstance.get('/patient/getpatientnames');
+        // const response = await axiosInstance.get('/patient/getpatientnames');
+        const response = await axiosInstance.get('/patient/getpatientid');
+        console.log(response)
         setPatients(response.data);
+        console.log(patients)
       } catch (error) {
         console.error('Error fetching patients', error);
       }
@@ -46,7 +49,7 @@ const Edit = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-
+    
     try {
       // Upload file first
       const uploadResponse = await axiosInstance.put(`/patient/update/${selectedPatient}/${selectedDoctor}`, formData, {
@@ -88,8 +91,8 @@ const Edit = () => {
           >
             <option value="">Select Patient</option>
             {patients.map((patient) => (
-              <option key={patient._id} value={patient.email}>
-                {patient.name}
+              <option key={patient._id} value={patient.idey}>
+                {patient.idey}
               </option>
             ))}
           </select>
