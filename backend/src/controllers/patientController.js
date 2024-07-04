@@ -23,10 +23,9 @@ module.exports.register = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
-    console.log("heyy")
     try {
         const { idey, key } = req.params;
-        console.log(req.params)
+
         // Check if file was uploaded
         const fileKey = req.file ? req.file.key : null;
 
@@ -34,7 +33,6 @@ module.exports.update = async (req, res) => {
         let patient = await Patient.findOne({ idey: idey });
 
         if (!patient) {
-            console.log("not found")
             return res.status(404).json({ message: "Patient not found" });
         }
 
@@ -127,17 +125,4 @@ module.exports.getpatientnames = async(req,res) =>{
         }
     };
 
-    module.exports.getpatientid = async(req,res) =>{
-        try {
-            // Fetch all patient names from the database
-            const patients = await Patient.find({}).select('idey'); 
-            console.log(patients)// Only select the 'name' field
-            // Send the patient names as a response
-            res.status(200).json(patients);
-        } catch (e) {
-            // Send a 500 status code and the error message if an exception occurs
-            res.status(500).json({ error: e.message });
-            console.log(e.message);
-        }
-    };
 
