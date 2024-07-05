@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Css/doctor.css';
 import axiosInstance from '../Axios/axios';
+import Header from '../components/header';
 
 const Doctor = () => {
   const [doctors, setDoctors] = useState([]);
@@ -26,6 +27,8 @@ const Doctor = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="appp">
       <div className="sidebar-d">
         <DoctorList doctors={doctors} onSelectDoctor={handleSelectDoctor} />
@@ -38,6 +41,7 @@ const Doctor = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
@@ -68,7 +72,9 @@ const DoctorDetail = ({ doctor }) => {
         ))}
       </ul>
     </div>
+    
   );
+  
 };
 
 export default Doctor;
