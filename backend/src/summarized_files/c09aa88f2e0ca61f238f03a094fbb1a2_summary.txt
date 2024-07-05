@@ -1,0 +1,1 @@
+Sudo service mongod start. Sudo service Mongod service mongo start. Mongod version. Mongo version. Mongod fork logpath / var / log / mongsodblog. Mongsod fork Logpath /var /log / mongosod.

@@ -1,0 +1,54 @@
+sudo service mongod start
+mongod
+sudo rm /tmp/mongodb-27017.sock
+mongod
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mkdir -p ~/mongodb/data/db
+mongod --dbpath ~/mongodb/data/db
+sudo service mongod start
+sudo systemctl status mongod
+mongod
+sudo chown -R `id -u`:`id -g` /data/db
+sudo systemctl start mongod
+sudo systemctl enable mongod
+mongod
+sudo service mongod start
+sudo systemctl status mongod
+
+
+
+
+
+
+
+sudo service mongodb start
+systemctl enable mongodb.service
+mongod --version
+systemctl list-unit-files | grep mongo
+sudo mongod --fork --logpath /var/log/mongodb.log
+sudo mongod --logpath /var/log/mongodb.log
+sudo mongod --config /path/to/mongodb.conf
+sudo mongod --config /etc/mongod.conf
+sudo service mongod start
+mongod
+sudo rm /tmp/mongodb-27017.sock
+mongod
+sudo mkdir -p /data/db
+ls
+mongod --dbpath ~/mongodb_data
+mkdir -p ~/mongodb_data
+mongod --dbpath ~/mongodb_data

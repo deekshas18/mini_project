@@ -15,6 +15,7 @@ const Edit = () => {
                 const response = await axiosInstance.get('/patient/getpatientnames');
                // const response = await axiosInstance.get('/patient/getpatientid');
                 setPatients(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching patients', error);
             }
