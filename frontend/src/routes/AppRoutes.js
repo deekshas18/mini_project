@@ -8,6 +8,7 @@ import Add from '../pages/Add';
 import Register from '../pages/Register';
 import Homemain from '../pages/Homemain';
 import Edit from '../pages/EditPat';
+import Doctor from '../pages/Doctor';
 // import Edit from '../pages/Edit';
 
 
@@ -23,6 +24,7 @@ function AppRoutes() {
             <Route path="/Add" element={<Add/>}/>
             <Route path='/Display' element={<Display/>}/>
             <Route path='/Edit' element={<Edit/>}/>
+            <Route path='/doctor' element={<Doctor />}/>
         </Routes>
     </div>
   )
