@@ -54,10 +54,10 @@ const addPatient = async (req, res) => {
         }
 
         // Check if patientName already exists in the doctor's patients array
-        if (doctor.patients.includes(patientName)) {
-            console.log("pat exists")
-            return res.status(400).json({ message: "Patient already exists for this doctor" });
-        }
+        // if (doctor.patients.includes(patientName)) {
+        //     console.log("pat exists")
+        //     return res.status(400).json({ message: "Patient already exists for this doctor" });
+        // }
 
         // Add patientName to the doctor's patients array
         doctor.patients.push(patientName);

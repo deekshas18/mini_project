@@ -1,12 +1,16 @@
 /* src/Css/Display.css */
-.main-container{
+.main-cont-add{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
-.container {
+.container-add {
     display: flex;
     /* flex-direction: column; */
-    margin-top: 0px;
+    /* margin-top: 0px; */
     /* margin-bottom: 5rem; */
     justify-content: space-evenly;
     align-items: center;

@@ -250,6 +250,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../Axios/axios';
 import '../Css/Display.css'
+import Header from '../components/header';
 
 const Display = () => {
   const [patients, setPatients] = useState([]);
@@ -323,9 +324,10 @@ const Display = () => {
 
   return (
     <div>
+      <Header/>
       <form onSubmit={handleSubmit}>
         <div className='search-main'>
-          <div>
+          <div className='search-main-sub'>
             <select
               className="select-field"
               id="patientSelect"
@@ -341,7 +343,7 @@ const Display = () => {
               ))}
             </select>
           </div>
-          <div>
+          <div className='search-main-sub'>
             <select
               className="select-field"
               id="doctorSelect"
@@ -357,9 +359,9 @@ const Display = () => {
               ))}
             </select>
           </div>
-        </div>
-        <div>
-          <button type="submit" className="search-btn">Search</button>
+          <div className='search-main-sub'>
+            <button type="submit" className="search-btn">Search</button>
+          </div>
         </div>
       </form>
 

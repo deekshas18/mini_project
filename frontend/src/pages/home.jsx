@@ -4,6 +4,7 @@ import "../Css/Home.css";
 import axios from "../Axios/axios";
 import Loader from "../components/Loader";
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'; // Correct import
+import Header from "../components/header";
 // import { FFmpeg } from '@ffmpeg/ffmpeg';
 // import {FFmpeg} from '@ffmpeg/ffmpeg';
 
@@ -213,6 +214,7 @@ function Home() {
 
   return (
     <div>
+      <Header/>
       <div className="home-container">
         <div className="card">
           <h3>Transcribe Recordings</h3>

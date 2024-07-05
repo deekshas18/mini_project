@@ -8,7 +8,7 @@
    */
   .container {
     max-width: 800px;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     padding: 20px;
     background-color: #fff; /* Adjust if needed */
     border: 1px solid #ccc;
@@ -32,9 +32,14 @@
   }
   
   .search-main{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .search-main-sub{
+    display: flex;
+    width: 20%;
   }
   .search-btn {
     background-color: #007bff;
@@ -44,6 +49,8 @@
     cursor: pointer;
     border-radius: 4px;
     font-size: 16px;
+    margin: 0px !important;
+    width: 100% !important;
   }
   
   .search-btn:hover {
