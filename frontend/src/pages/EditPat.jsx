@@ -15,6 +15,7 @@ const Edit = () => {
                 // const response = await axiosInstance.get('/patient/getpatientnames');
                 const response = await axiosInstance.get('/patient/getpatientid');
                 setPatients(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching patients', error);
             }
@@ -79,7 +80,7 @@ const Edit = () => {
                                 //   <option key={patient._id} value={patient.email}>
                                 //     {patient.name}
                                 <option key={patient._id} value={patient.idey}>
-                                    {patient.idey}
+                                    {patient.names}
                                 </option>
                             ))}
                         </select>

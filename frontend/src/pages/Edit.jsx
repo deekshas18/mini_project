@@ -14,6 +14,8 @@ const Edit = () => {
     const fetchPatients = async () => {
       try {
         const response = await axiosInstance.get('/patient/getpatientid');
+        console.log(response.data);
+        console.log("hey")
         setPatients(response.data);
       } catch (error) {
         console.error('Error fetching patients', error);
@@ -90,7 +92,7 @@ const Edit = () => {
               // <option key={patient._id} value={patient.email}>
               //   {patient.name}
               <option key={patient._id} value={patient.idey}>
-                {patient.idey}
+                {/* {patient.names} */}
               </option>
             ))}
           </select>

@@ -27,7 +27,9 @@ def summarize_text(text):
     """
     Summarize the text using a transformer summarization model.
     """
-    summarizer = pipeline("summarization", model="t5-small")
+    # summarizer = pipeline("summarization", model="t5-small")
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
 
     split_tokens = text.split(" ")
     docs = [" ".join(split_tokens[i:i+850]) for i in range(0, len(split_tokens), 850)]
