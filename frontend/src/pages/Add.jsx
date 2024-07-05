@@ -1,6 +1,7 @@
 import {React,useState} from "react";
 import "../Css/Add.css";
 import axios from '../Axios/axios'
+import Header from "../components/header";
 const Add = () => {
   const [docInfo, setDocInfo] = useState({
     dname:"",
@@ -56,6 +57,7 @@ const Add = () => {
   }
   return (
     <div className="main-cont-add">
+      <Header/>
       <div className="container-add">
         <div className="card">
           <h5 className="card-title">Doctor Information</h5>

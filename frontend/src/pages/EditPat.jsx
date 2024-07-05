@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../Axios/axios';
 import '../Css/Edit.css'; // Import your CSS file for styling
+import Header from '../components/header';
 const Edit = () => {
     const [patients, setPatients] = useState([]);
     const [doctors, setDoctors] = useState([]);
@@ -37,7 +38,7 @@ const Edit = () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        
+
         try {
             // Upload file first
             const uploadResponse = await axiosInstance.put(`/patient/update/${selectedPatient}/${selectedDoctor}`, formData, {
@@ -60,56 +61,59 @@ const Edit = () => {
         }
     };
     return (
-        <div className="container">
-            <h2 className="title">Upload Patient File</h2>
-            <form onSubmit={handleSubmit} className="upload-form">
-                <div className="form-group">
-                    <label htmlFor="patient">Select Patient:</label>
-                    <select
-                        id="patient"
-                        value={selectedPatient}
-                        onChange={(e) => setSelectedPatient(e.target.value)}
-                        required
-                    >
-                        <option value="">Select Patient</option>
-                        {patients.map((patient) => (
-                            //   <option key={patient._id} value={patient.email}>
-                            //     {patient.name}
-                            <option key={patient._id} value={patient.idey}>
-                                {patient.idey}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="doctor">Select Doctor:</label>
-                    <select
-                        id="doctor"
-                        value={selectedDoctor}
-                        onChange={(e) => setSelectedDoctor(e.target.value)}
-                        required
-                    >
-                        <option value="">Select Doctor</option>
-                        {doctors.map((doctor) => (
-                            <option key={doctor._id} value={doctor.dname}>
-                                {doctor.dname}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="file">Choose File:</label>
-                    <input
-                        type="file"
-                        id="file"
-                        accept=".txt"
-                        onChange={handleFileChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="upload-btn">Upload</button>
-                {uploadStatus && <div className="upload-status">{uploadStatus}</div>}
-            </form>
+        <div className="container-edit">
+            <Header/>
+            <div className='container-main'>
+                <h2 className="title">Upload Patient File</h2>
+                <form onSubmit={handleSubmit} className="upload-form">
+                    <div className="form-group">
+                        <label htmlFor="patient">Select Patient:</label>
+                        <select
+                            id="patient"
+                            value={selectedPatient}
+                            onChange={(e) => setSelectedPatient(e.target.value)}
+                            required
+                        >
+                            <option value="">Select Patient</option>
+                            {patients.map((patient) => (
+                                //   <option key={patient._id} value={patient.email}>
+                                //     {patient.name}
+                                <option key={patient._id} value={patient.idey}>
+                                    {patient.idey}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="doctor">Select Doctor:</label>
+                        <select
+                            id="doctor"
+                            value={selectedDoctor}
+                            onChange={(e) => setSelectedDoctor(e.target.value)}
+                            required
+                        >
+                            <option value="">Select Doctor</option>
+                            {doctors.map((doctor) => (
+                                <option key={doctor._id} value={doctor.dname}>
+                                    {doctor.dname}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="file">Choose File:</label>
+                        <input
+                            type="file"
+                            id="file"
+                            accept=".txt"
+                            onChange={handleFileChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="upload-btn">Upload</button>
+                    {uploadStatus && <div className="upload-status">{uploadStatus}</div>}
+                </form>
+            </div>
         </div>
     );
 };
