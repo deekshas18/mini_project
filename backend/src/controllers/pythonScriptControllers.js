@@ -232,8 +232,8 @@ const summarizeFileFromAudio = async ( outputFile, res) => {
                         // fs.unlinkSync(inputFilePath);
                         // fs.unlinkSync(summarizedFilePath);
                     } else {
-                        console.error(`Output file not found: ${summarizedFilePath}`);
-                        res.status(500).send('Internal Server Error');
+                        console.error(`Output file not found in summary: ${summarizedFilePath}`);
+                        res.status(500).send('Internal Server Error in summary');
                     }
                 } else {
                     console.error(`Python script error: ${scriptError}`);

@@ -11,5 +11,6 @@ router.get('/find/:name', patientController.find);
 router.get('/getfiles/:idey', patientController.getFileNames);
 router.delete('/delete/:idey/:filename', deleteFileMiddleware, patientController.deleteFile);
 router.get('/getpatientnames',patientController.getpatientnames)
+router.get('/getpatientid',patientController.getpatientid)
 
 module.exports = router;

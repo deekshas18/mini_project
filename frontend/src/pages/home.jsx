@@ -239,7 +239,7 @@ function Home() {
             onChange={handleTextChange}
           />
         </div>
-        <div className="card">
+        {/* <div className="card">
           <h3>Dictate</h3>
           <p>Record now.</p>
           <button onClick={handleStartDictating}>
@@ -254,7 +254,7 @@ function Home() {
               />
             </audio>
           )}
-        </div>
+        </div> */}
       </div>
       
     </div>
