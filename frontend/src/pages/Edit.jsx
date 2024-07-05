@@ -13,7 +13,6 @@ const Edit = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        // const response = await axiosInstance.get('/patient/getpatientnames');
         const response = await axiosInstance.get('/patient/getpatientid');
         setPatients(response.data);
       } catch (error) {
@@ -49,7 +48,6 @@ const Edit = () => {
     formData.append('file', file);
     console.log(formData);
     try {
-      // Upload file first
       const uploadResponse = await axiosInstance.put(`/patient/update/${selectedPatient}/${selectedDoctor}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -58,7 +56,6 @@ const Edit = () => {
       console.log(uploadResponse.data);
       setUploadStatus('File uploaded successfully!');
 
-      // Now call the addPatient API to update doctor's patients array
       const addPatientResponse = await axiosInstance.put(`/doctor-routes/patientArray/${selectedPatient}/${selectedDoctor}`);
       console.log(addPatientResponse.data);
 
@@ -76,13 +73,14 @@ const Edit = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="title">Upload Patient File</h2>
-      <form onSubmit={handleSubmit} className="upload-form">
-        <div className="form-group">
-          <label htmlFor="patient">Select Patient:</label>
+    <div className="edit-container">
+      <h2 className="edit-title">Upload Patient File</h2>
+      <form onSubmit={handleSubmit} className="edit-form">
+        <div className="edit-form-group">
+          <label htmlFor="patient" className="edit-label">Select Patient:</label>
           <select
             id="patient"
+            className="edit-select"
             value={selectedPatient}
             onChange={(e) => setSelectedPatient(e.target.value)}
             required
@@ -97,10 +95,11 @@ const Edit = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="doctor">Select Doctor:</label>
+        <div className="edit-form-group">
+          <label htmlFor="doctor" className="edit-label">Select Doctor:</label>
           <select
             id="doctor"
+            className="edit-select"
             value={selectedDoctor}
             onChange={(e) => setSelectedDoctor(e.target.value)}
             required
@@ -113,18 +112,19 @@ const Edit = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="file">Choose File:</label>
+        <div className="edit-form-group">
+          <label htmlFor="file" className="edit-label">Choose File:</label>
           <input
             type="file"
             id="file"
+            className="edit-input-file"
             accept=".txt"
             onChange={handleFileChange}
             required
           />
         </div>
-        <button type="submit" className="upload-btn">Upload</button>
-        {uploadStatus && <div className="upload-status">{uploadStatus}</div>}
+        <button type="submit" className="edit-upload-btn">Upload</button>
+        {uploadStatus && <div className="edit-upload-status">{uploadStatus}</div>}
       </form>
     </div>
   );
