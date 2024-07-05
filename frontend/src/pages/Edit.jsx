@@ -20,7 +20,7 @@ const Edit = () => {
       } catch (error) {
         console.error('Error fetching patients', error);
       }
-    };
+    }; 
 
     const fetchDoctors = async () => {
       try {
