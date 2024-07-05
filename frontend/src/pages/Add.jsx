@@ -55,8 +55,8 @@ const Add = () => {
     return alert("Patient added successfully")
   }
   return (
-    <div className="main-cont">
-      <div className="container">
+    <div className="main-cont-add">
+      <div className="container-add">
         <div className="card">
           <h5 className="card-title">Doctor Information</h5>
           <form className="card-body" onSubmit={handleAddDoctor}>
