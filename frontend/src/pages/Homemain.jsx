@@ -5,10 +5,16 @@ import user from "../Assets/user.png";
 import file from "../Assets/file.png";
 import trans from "../Assets/transcription.png"
 import edit from '../Assets/resume.png'
+import Header from "../components/header";
 
 function Homemain() {
   return (
     <div>
+      <Header/>
+      <div className="home-heading">
+            <h1>Welcome to Medical Transcribing Services</h1>
+            <p>Your trusted partner in medical transcription.</p>
+        </div>
       <div className="twobtn">
         <div className="card1">
           <img src={user} alt="User" />

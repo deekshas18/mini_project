@@ -48,3 +48,12 @@
   overflow-x: auto; /* Enable horizontal scrolling */
   overflow-y: hidden; /* Hide vertical scroll bar */
 }
+.home-heading{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.home-heading h1{
+    padding: 0px;
+    margin: 30px 0px 0px 0px;
+}
