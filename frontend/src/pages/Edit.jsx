@@ -46,7 +46,7 @@ const Edit = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-
+    console.log(formData);
     try {
       const uploadResponse = await axiosInstance.put(`/patient/update/${selectedPatient}/${selectedDoctor}`, formData, {
         headers: {
@@ -87,6 +87,8 @@ const Edit = () => {
           >
             <option value="">Select Patient</option>
             {patients.map((patient) => (
+              // <option key={patient._id} value={patient.email}>
+              //   {patient.name}
               <option key={patient._id} value={patient.idey}>
                 {patient.idey}
               </option>

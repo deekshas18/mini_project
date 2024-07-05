@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="round2.css">
+    <script src="script.js" defer></script>
+    <title>Round two</title>
+</head>
+
+<body>
+    <div class="outer-div">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="icons/blog.svg" alt="Logo">
+            </div>
+            <div class="siteHeading">
+                <span>Xtra Blog</span>
+            </div>
+            <div class="menu">
+                <div class="menu-item menu-item_in">
+                    <img src="icons/home-white.svg" alt="Item 1 Icon">
+                    <span>Blog Home</span>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <a href="single-post.html"> 
+                        <img src="icons/single-post-white.svg" alt="Item 2 Icon">
+                        <span>Single Post</span>
+                    </a>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <img src="icons/about-white.svg" alt="Item 3 Icon">
+                    <span>About Xtra</span>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <img src="icons/contact-white.svg" alt="Item 4 Icon">
+                    <span>Contact Us</span>
+                </div>
+            </div>
+            <div class="white-box">
+                <div class="social-icons">
+                    <img src="icons/twitter.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/facebook.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/instagram.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/linkedin.svg" alt="4">
+                </div>
+                
+            </div>
+            <div class="dummyText">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s
+            </div>
+        </div>
+        <div class="landing">
+
+            <div class="search-box">
+                <form id="searchForm" onsubmit="scrollToText(); return false;">
+                    <input type="text" id="searchInput" name="searchInput" placeholder="Enter to search">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="grid-image">
+                        <span class="grid-image-new">NEW</span>
+                        <img src="./assets/img-01.jpg" alt="">
+                    </div>
+                    <h2>Simple and useful HTML layout </h2>
+                    <div class="grid-content-1">
+                        <span>Travel . Events</span>
+                        <span>June 24, 2020 </span>
+                    </div>
+                    <div class="grid-content-2">
+                        <span>36 comments</span>
+                        <span>by Admin Nat </span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-image">
+                        <span class="grid-image-new">NEW</span>
+                        <img src="./assets/img-02.jpg" alt="">
+                    </div>
+                    <h2>Multi-purpose blog template </h2>
+                    <div class="grid-content-1">
+                        <span>Travel . Events</span>
+                        <span>June 24, 2020 </span>
+                    </div>
+                    <div class="grid-content-2">
+                        <span>36 comments</span>
+                        <span>by Admin Nat </span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-image-2">
+                        <img src="./assets/img-03.jpg" alt="">
+                    </div>
+                    <h2> How can you apply Xtra Blog </h2>
+                    <div class="grid-content-1">
+                        <span>Travel . Events</span>
+                        <span>June 24, 2020 </span>
+                    </div>
+                    <div class="grid-content-2">
+                        <span>36 comments</span>
+                        <span>by Admin Nat </span>
+                    </div>
+                    
+                </div>
+                <div class="grid-item">
+                    <div class="grid-image-2">
+                        <img src="./assets/img-04.jpg" alt="">
+                    </div>                    
+                    <h2> A little restriction to apply </h2> 
+                    <div class="grid-content-1">
+                        <span>Travel . Events</span>
+                        <span>June 24, 2020 </span>
+                    </div>
+                    <div class="grid-content-2">
+                        <span>36 comments</span>
+                        <span>by Admin Nat </span>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="random-buttons">
+                <div class="tm-prev-next-wrapper">
+                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
+                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                </div>
+                <div class="tm-paging-wrapper">
+                    <span class="d-inline-block mr-3">Page</span>
+                    <nav class="tm-paging-nav d-inline-block">
+                        <ul>
+                            <li class="tm-paging-item active">
+                                <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
+                            </li>
+                            <li class="tm-paging-item">
+                                <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
+                            </li>
+                            <li class="tm-paging-item">
+                                <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
+                            </li>
+                            <li class="tm-paging-item">
+                                <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+singlepost.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="round2.css">
+    <script src="script-three.js" defer></script>
+    <script src="script-two.js" defer></script>
+    <title>Round two</title>
+</head>
+
+<body>
+    <div class="outer-div">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="icons/blog.svg" alt="Logo">
+            </div>
+            <div class="siteHeading">
+                <span>Xtra Blog</span>
+            </div>
+            <div class="menu">
+                <div class="menu-item menu-item_in">
+                    <a href="round2.html">
+                        <img src="icons/home-white.svg" alt="Item 1 Icon">
+                        <span>Blog Home</span>
+                    </a>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <a href="single-post.html">
+                        <img src="icons/single-post-white.svg" alt="Item 2 Icon">
+                        <span>Single Post</span>
+                    </a>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <img src="icons/about-white.svg" alt="Item 3 Icon">
+                    <span>About Xtra</span>
+                </div>
+                <div class="menu-item menu-item_in">
+                    <img src="icons/contact-white.svg" alt="Item 4 Icon">
+                    <span>Contact Us</span>
+                </div>
+            </div>
+            <div class="white-box">
+                <div class="social-icons">
+                    <img src="icons/twitter.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/facebook.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/instagram.svg" alt="4">
+                </div>
+                <div class="social-icons">
+                    <img src="icons/linkedin.svg" alt="4">
+                </div>
+
+            </div>
+            <div class="dummyText">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s
+            </div>
+        </div>
+
+        <!-- <div class="page-two">
+
+            <div class="search-box">
+                <form id="searchForm" onsubmit="scrollToText(); return false;">
+                    <input type="text" id="searchInput" name="searchInput" placeholder="Enter to search">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <div class="image-container">
+                <img src="assets/img-6.jpeg" alt="Your Image">
+                <br>
+                <button id="like-button">&#x2764;<span id="like-count"> 0</span></button>
+
+
+            </div>
+
+            <p class="first-para">Siddaganaga Institute Of Technology</p>
+            <p class="second-para">25th April, 2024 posted by webify team </p>
+            <div class="sub-section">
+                <div class="text-part">
+                    <p class="para">Siddaganga Institute of Technology has a rich heritage of bestowing knowledge and
+                        passion to
+                        young minds.
+                        Its motto 'work is worship' is ingrained into the minds of every student,
+                        thus creating an inclusive and empowering community for students that encourages growth and
+                        achievementSiddaganga Institute of Technology has a rich heritage of bestowing knowledge and
+                        passion to
+                        young minds.
+                        Its motto 'work is worship' is ingrained into the minds of every student,
+                        thus creating an inclusive and empowering community for students that encourages growth and
+                        achievementSiddaganga Institute of Technology has a rich heritage of bestowing knowledge and
+                        passion to
+                        young minds.
+                        Its motto 'work is worship' is ingrained into the minds of every student,
+                        thus creating an inclusive and empowering community for students that encourages growth and
+                        achievementSiddaganga Institute of Technology has a rich heritage of bestowing knowledge and
+                        passion to
+                        young minds.
+                        Its motto 'work is worship' is ingrained into the minds of every student,
+                        thus creating an inclusive and empowering community for students that encourages growth and
+                        achievement Siddaganga Institute of Technology has a rich heritage of bestowing knowledge and
+                        passion to
+                        young minds.
+                        Its motto 'work is worship' is ingrained into the minds of every student,
+                        thus creating an inclusive and empowering community for students that encourages growth and
+                        achievement</p>
+                </div>
+                <div class="related-post">
+                    <p class="para-to">Related Blogs</p>
+                    <p class="article-one">Article 1</p>
+                    <div class="image-one"><img src="assets/img-2.JPG" alt=""></div>
+                    <p class="post-below"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s</p>
+                    <p class="article-one">Article 2</p>
+                    <div class="image-one"><img src="assets/img-2.JPG" alt=""></div>
+                    <p class="post-below"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s</p>
+                    
+                </div>
+            </div>
+        </div> -->
+        <div class="page-two">
+            
+            <div class="main1">
+                <div class="heading">Single Post</div>
+                <div class="video-main">
+                    <video src="assets/wheat-field.mp4" autoplay muted loop></video>
+                </div>
+                <div class="icons-main">
+                    <button id="like-button">&#x2764;<span id="like-count"> 0</span></button>
+                    <img src="assets/chat-bubble.png" alt="Chat Bubble" class="chat-icon" />
+                    <img src="assets/send.png" alt="Send" class="send-icon" />
+                </div>
+            </div>
+            <div class="text1">Single Post of Xtra Blog HTML Template</div>
+            <div class="text2">June 16, 2020 posted by Admin Nat</div>
+                <div class="page-two-section-two">
+                  
+                    <div class="comments-main">
+                        <h2>Comments</h2>
+                        <hr class="linee" />
+                        <div class="comments">
+                            <div class="comments-left">
+                                <img src="./assets/comment-1.jpg" />
+                                <h3>John Doe</h3>
+                            </div>
+                            <div class="comments-right">
+                                <div class="comments-right-text">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. A exercitationem earum
+                                    inventore
+                                    cumque dicta repellendus esse, amet dolores tenetur ex ad?
+                                </div>
+                                <div class="comments-right-down">
+                                    <span>REPLY</span>
+                                    <span>April, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="linee-gray" />
+                    </div>
+                    <div class="categories">
+                        <hr class="linee" />
+                        <h2>Categories</h2>
+                        <ul>
+                            <li>Visual Designs</li>
+                            <li>Travel Events</li>
+                            <li>Web Development</li>
+                            <li>Video and Audio</li>
+                            <li>Lorem ipsum dolor.</li>
+                            <li>Lorem ipsum dolor.</li>
+                        </ul>
+                        <hr class="linee" />
+                    </div>
+                </div>
+
+                <div class="page-two-section-three">
+                    <div class="your-comment">
+                        <h1>Your Comment</h1>
+                        <input />
+                        <input />
+                        <textarea rows="8" cols="50"></textarea>
+                        <button>Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</body>
+
+</html>
+
+
+round2.css
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.outer-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.sidebar {
+    width: 25%;
+    height: 100%;
+    background-color: #0cc;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: fixed;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0;
+}
+
+.logo{
+    margin-top: 5rem;
+}
+.logo img {
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+    margin-left: 35%;
+}
+
+.siteHeading {
+    font-size: x-large;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: white;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 2rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    height: 60px;
+}
+
+.menu-item_in {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.menu-item img {
+    width: 30px;
+    height: 30px;
+    margin-right: 30px;
+    margin-left: 20px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit color from parent */
+}
+.menu-item span {
+    font-size: 1.4rem;
+}
+.menu-item:hover {
+    background-color: rgb(0, 0, 0);
+    border-radius: 0px;
+    width: 90%;
+    left: 0;
+    /* position: absolute; */
+    color: #0CC;
+    cursor: pointer;
+}
+.menu-item.menu-item_in{
+display: flex;
+align-items: center;
+transition: background-color 0.3s ease-in;
+/* justify-content: center; */
+}
+.menu-item.menu-item_in:hover{
+    background-color: rgb(0, 0, 0);
+}
+.menu-item:hover::after {
+    content: "";
+    position: absolute;
+    background-color: #0cc;
+    border: 2px solid white;
+    width: 265px;
+    height: 50px;
+    top: calc(10% + 10px);
+    left: calc(10% + 5px);
+    z-index: -1;
+    border-radius: 0px;
+    content: url('new-image.svg');
+}
+.white-box{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2rem 2rem 0rem 2rem;
+}
+.social-icons{
+    background-color: #ffff;
+    margin-left: 10px;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.white-box img {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+.grid-content-1{
+    color: #099;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-bottom: #969292 1px solid;
+}
+
+.grid-content-2{
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-bottom: 3rem;
+}
+.dummyText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 80px;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+    color: white;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+.landing{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    height: 100%;
+}
+.page-two{
+    width: 75%;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    margin-left: 25%;
+}
+
+.search-box {
+    width: 100%;
+}
+
+.search-box input[type="text"] {
+    width: 25%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #b0b0b0;
+    margin-left: 55%;
+    margin-top: 5%;
+}
+
+.search-box input[type="submit"] {
+    width: 10%;
+    padding: 17px;
+    background: #0CC;
+    border: 1px solid #b0b0b0;
+}
+
+.grid-container {
+    margin-top: 5rem;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: auto auto;
+}
+.grid-item{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    /* width: 80%; */
+    height: 100%;
+    /* max-height: 100%; */
+}
+.grid-item img {
+    /* width: 100%; */
+    /* height: 100%; */
+    opacity: 0.6;
+}
+.grid-image{
+    position: relative;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* max-height: 100%; */
+}
+.grid-image-new{
+    position: absolute;
+    z-index: 3;
+    right: -10px;
+    top: -30px;
+    background-color: #0CC;
+    padding: 1rem;
+    color: #ffff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.grid-item img:hover {
+    transition: transform 0.3s ease;
+    transform: translateX(10px);
+    opacity: 1;
+    /* border: 5px solid rgb(77, 255, 0); */
+}
+
+.grid-item h2 {
+    color: #099;
+    padding: 1rem;
+}
+
+.grid-item p {
+    text-align: justify;
+    padding-right: 6.5rem;
+    font-size: 1.8rem;
+    margin-left: 4rem;
+}
+
+.random-buttons {
+    width: 100%;
+    /* height: 20rem; */
+    padding-top: 5.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5rem;
+    align-items: center;
+    padding-bottom: 5rem;
+}
+
+.bzero,
+.bone {
+    margin-left: 3rem;
+    height: 4rem;
+    width: 9rem;
+    background-color: #0CCC;
+    border-radius: 1rem;
+    border: none;
+}
+
+.btwo {
+    margin-left: 30rem;
+    height: 2.5rem;
+    width: 6rem;
+    background-color: #0CCC;
+    border-radius: 0.3rem;
+    border: none;
+}
+
+.bthree,
+.bfour,
+.bfive {
+    margin-left: 1rem;
+    height: 2.5rem;
+    width: 6rem;
+    background-color: #0CCC;
+    border-radius: 0.3rem;
+    border: none;
+}
+
+.image-container {
+    text-align: center;
+}
+.image-container span {
+    text-align: center;
+    margin-left: 1rem;
+}
+
+#like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-right: 59rem;
+}
+
+#like-button:hover {
+    color: red;
+}
+
+.image-container img {
+    margin-top: 4rem;
+    width: 50rem;
+    padding-right: 15rem     ;
+}
+
+.first-para{
+    color: #0CC;
+    font-size: 2.5rem;
+    padding-left: 10rem;
+}
+.second-para{
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    padding-left: 10rem; 
+}
+.para{
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    padding-left: 10rem; 
+    text-align:justify; 
+    padding-right: 10rem;
+}
+
+.sub-section
+{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.text-part{
+    width: 60%;
+    height: 100%;
+    
+}
+.related-post{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.para-to{
+    color: #0CC;
+    font-size: 2rem;
+    margin-top: 0;
+    padding-top: 0;
+    text-decoration: underline;
+}
+.image-one img{
+    width: 20rem;
+    height: 12rem;
+}
+.article-one{
+    color: #0CC;
+    font-size: 2rem;
+}
+.post-below{
+    text-align: justify;
+    margin-right:14rem ;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.tm-btn {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: .5rem !important;
+}
+
+.tm-btn-primary {
+    background-color: #0CC;
+    color: white;
+    padding: 8px 43px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem !important;
+}
+
+.tm-mr-20 {
+    margin-right: 20px;
+}
+
+.tm-btn.disabled {
+    background-color: #F0F0F0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.tm-btn {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    height: 40px;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: .5rem !important;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.tm-paging-nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.tm-paging-item .tm-paging-link:hover, .tm-paging-item.active .tm-paging-link {
+    background-color: #0CC;
+    color: white;
+}
+
+.tm-paging-link {
+    background-color: #F0F0F0;
+    color: #999;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tm-paging-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5rem;
+}
+.tm-paging-wrapper span{
+    color: #999;
+    font-size: 1.5rem;
+
+}
+
+.page-two-section-two{
+    
+    padding: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} 
+.categories{
+    width: 30%;
+    transform: translateY(-250px);
+
+}
+
+.categories h2,
+.comments-main h2,
+.your-comment h1{
+    color: #009999;
+    font-size: 1.9rem;
+    font-weight: 200;
+
+}
+.categories h2{
+    margin: 2.5rem 0rem;
+}
+.categories li{
+    cursor: pointer;
+    list-style: none;
+    color: #009999;
+    font-size: 20px;
+    padding: 0.4rem;
+    font-weight: normal;
+}
+.categories li:hover{
+    color:#00CCCC;
+}
+.categories ul{
+    margin-bottom: 3rem;
+}
+.comments-main{
+    width: 50%;
+}
+.comments{
+    display: flex;
+    width: 100%;
+}
+.comments-left{
+    width: 30%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.comments-left img{
+    border-radius: 50%;
+    border: 1px solid gray;
+    padding: 2px;
+}
+
+.linee{
+    border-top: 5px solid #0CC;
+}
+.linee-gray{
+    border-top: 2px solid rgb(234, 229, 229);
+}
+.comments-right{
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.comments-left h3{
+    
+    font-size: 1.3rem;
+    color: #009999;
+    font-weight: 100;
+}
+.comments-right-text{
+    font-size: 20px;
+    line-height: 2rem;
+    color: gray;
+}
+.comments-right-down{
+    color: #009999;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.your-comment{
+    padding: 5rem;
+    padding-top: 0rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.your-comment input{
+    padding: 1rem;
+}
+
+.your-comment input,
+.your-comment textarea{
+    outline: none;
+    border-color:#00CCCC;
+    outline: none;
+    
+}
+
+.your-comment button{
+
+    font-size: 18px;
+    border-radius: 3px;
+    margin-top: 2rem;
+     margin-left: 240px;
+    width: 30%;
+    padding: 1rem;
+    background-color: #00CCCC;
+    
+    color: white;
+    border: none;
+    /* transition: 0.5s ease-in-out; */
+}
+.your-comment button:hover{
+    background-color: #06b2b2;
+    transition: 0.5s ease-in-out;
+}
+
+.main1{
+   padding:6rem;
+   padding-top: 2rem;
+}
+
+.heading{
+    color: #00CCCC;
+    font-weight: bold;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+.icons-main {
+    display: flex;
+    align-items: center; 
+    
+} 
+
+#like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-top: 0rem;
+    width: 100px;
+   margin-right: 1rem;
+    /* margin-right: 59r1.5 */
+    /* padding-left: 6rem; */
+}
+
+#like-button span{
+    margin-left: 0.5rem;
+}
+
+#like-button:hover {
+    color: red;
+}
+
+.chat-icon{
+    width: 28px; 
+    margin-right: 2rem;
+} 
+.send-icon {
+    width: 26px;
+    margin-right: 0.5rem;
+}
+
+.text1{
+    color: #00CCCC;
+    font-size: 1.8rem;
+    padding-left: 6rem;
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.text2{
+    color: gray;
+    padding-left: 6rem;
+    font-size: 18px;
+}

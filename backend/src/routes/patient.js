@@ -13,5 +13,4 @@ router.delete('/delete/:idey/:filename', deleteFileMiddleware, patientController
 router.get('/getpatientnames',patientController.getpatientnames)
 router.get('/getpatientid',patientController.getpatientid)
 
-
 module.exports = router;

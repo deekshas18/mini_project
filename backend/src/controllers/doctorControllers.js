@@ -34,7 +34,7 @@ const addDoctor = async(req,res) => {
 const getDoctors = async(req,res) => {
     try{
         const response = await DoctorSchema.find({}).select("+dname +specialization +patients");
-        console.log(response);
+        // console.log(response);
 
         return res.status(200).json({"DoctorsList":response});
     }catch(err){    
@@ -46,7 +46,6 @@ const getDoctors = async(req,res) => {
 const addPatient = async (req, res) => {
     try {
         const { patientName, DoctorName } = req.params;
-
         // Find the doctor by dname (DoctorName)
         let doctor = await DoctorSchema.findOne({ dname: DoctorName });
 
@@ -56,15 +55,14 @@ const addPatient = async (req, res) => {
 
         // Check if patientName already exists in the doctor's patients array
         if (doctor.patients.includes(patientName)) {
+            console.log("pat exists")
             return res.status(400).json({ message: "Patient already exists for this doctor" });
         }
 
         // Add patientName to the doctor's patients array
         doctor.patients.push(patientName);
-
         // Save the updated doctor document
         await doctor.save();
-
         res.status(200).json({ message: "Patient added successfully", doctor });
     } catch (err) {
         console.error(err.message);

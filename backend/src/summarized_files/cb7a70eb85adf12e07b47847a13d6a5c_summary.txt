@@ -1,0 +1,7 @@
+ meta name = viewport content = width = devicewidth initialscale = 10 > .  link rel = stylesheet type = text / css href = round2cst >  / head >. ' src' = icons / homewhitesvg alt = item 1 icon >.
+
+ITS Motto, ' Work is worship ' is ingrained into the minds of every student . thus creating an inclusive and empowering community for students that encourages growth and. Passion to. Young minds .
+
+lorem ipsum is simply dummy text. of the printing and typesetting industry, LOREm IPsum has been the . industry ' s standard dummies text ever since the 1500s  / p > . div class = imageone >  img src = assets / img2jpg alt = > ... .
+
+gridimagenew . Position Absolute. Zindex 3. / * border 5px solid rGB77 255. 0 * /. Griditem h2  .
