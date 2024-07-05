@@ -37,6 +37,7 @@ const Edit = () => {
         const formData = new FormData();
         formData.append('file', file);
 
+        
         try {
             // Upload file first
             const uploadResponse = await axiosInstance.put(`/patient/update/${selectedPatient}/${selectedDoctor}`, formData, {
