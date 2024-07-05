@@ -1,0 +1,34 @@
+.appp {
+    display: flex;
+  }
+  
+  .sidebar-d {
+    width: 30%;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .content-d {
+    width: 70%;
+    padding: 10px;
+  }
+  
+  .doctor-list-d ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .doctor-list-d li {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .doctor-list-d li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .doctor-detail-d {
+    padding: 10px;
+  }
+  
