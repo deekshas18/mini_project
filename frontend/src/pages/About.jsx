@@ -1,8 +1,11 @@
 import React from 'react';
 import '../Css/About.css';
+import Header from '../components/header';
 
 const About = () => {
   return (
+    <>
+    <Header/>
     <div className="aboutUs-container">
       <h1 className="aboutUs-header">About Us</h1>
       <p className="aboutUs-paragraph">
@@ -30,6 +33,7 @@ const About = () => {
         </li>
       </ul>
     </div>
+    </>
   );
 };
 
