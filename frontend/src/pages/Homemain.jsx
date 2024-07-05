@@ -5,6 +5,7 @@ import user from "../Assets/user.png";
 import file from "../Assets/file.png";
 import trans from "../Assets/transcription.png"
 import edit from '../Assets/resume.png'
+import doc from '../Assets/find.png'
 import Header from "../components/header";
 
 function Homemain() {
@@ -25,7 +26,13 @@ function Homemain() {
         <div className="card1">
           <img src={file} alt="File" />
           <Link to="/Display">
-            <button className="displaybtn">View</button>
+            <button className="displaybtn">View patient</button>
+          </Link>
+        </div>
+        <div className="card1">
+          <img src={doc} alt="doc" className="doc-image"/>
+          <Link to="/doctor">
+            <button className="displaybtn">View doctor</button>
           </Link>
         </div>
         <div className="card1">
