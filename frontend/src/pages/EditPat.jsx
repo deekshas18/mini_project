@@ -12,8 +12,8 @@ const Edit = () => {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                // const response = await axiosInstance.get('/patient/getpatientnames');
-                const response = await axiosInstance.get('/patient/getpatientid');
+                const response = await axiosInstance.get('/patient/getpatientnames');
+               // const response = await axiosInstance.get('/patient/getpatientid');
                 setPatients(response.data);
             } catch (error) {
                 console.error('Error fetching patients', error);
@@ -63,13 +63,14 @@ const Edit = () => {
     return (
         <div className="container-edit">
             <Header/>
+            <div className='contttt'>
             <div className='container-main'>
                 <h2 className="title">Upload Patient File</h2>
                 <form onSubmit={handleSubmit} className="upload-form">
-                    <div className="form-group">
-                        <label htmlFor="patient">Select Patient:</label>
+                    <div className="form-group-e">
+                        <label htmlFor="patient-e">Select Patient:</label>
                         <select
-                            id="patient"
+                            id="patient-e"
                             value={selectedPatient}
                             onChange={(e) => setSelectedPatient(e.target.value)}
                             required
@@ -79,12 +80,12 @@ const Edit = () => {
                                 //   <option key={patient._id} value={patient.email}>
                                 //     {patient.name}
                                 <option key={patient._id} value={patient.idey}>
-                                    {patient.idey}
+                                    {patient.name}
                                 </option>
                             ))}
                         </select>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group-e">
                         <label htmlFor="doctor">Select Doctor:</label>
                         <select
                             id="doctor"
@@ -100,7 +101,7 @@ const Edit = () => {
                             ))}
                         </select>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group-e">
                         <label htmlFor="file">Choose File:</label>
                         <input
                             type="file"
@@ -110,9 +111,10 @@ const Edit = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className="upload-btn">Upload</button>
+                    <button type="submit" className="upload-btn-e">Upload</button>
                     {uploadStatus && <div className="upload-status">{uploadStatus}</div>}
                 </form>
+            </div>
             </div>
         </div>
     );
